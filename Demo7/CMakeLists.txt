@@ -1,9 +1,15 @@
+# 添加版本号
+# 给项目添加和维护版本号是一个好习惯，这样有利于用户了解每个版本的维护情况，
+# 并及时了解当前所用的版本是否过时，或是否可能出现不兼容的情况。
+
 cmake_minimum_required (VERSION 2.8)
 
 # 项目信息
 project (Demo7)
+
+# 分别指定当前的项目的主版本号和副版本号。
 set (Demo_VERSION_MAJOR 1)
-set (Demo_VERSION_MINOR 0)
+set (Demo_VERSION_MINOR 2)
 
 set (CMAKE_INCLUDE_CURRENT_DIR ON)
 

@@ -1,0 +1,6 @@
+/home/meiyuanyuan/cmake-demo/Demo3/buuld/CMakeFiles/rebuild_cache.dir
+/home/meiyuanyuan/cmake-demo/Demo3/buuld/CMakeFiles/Demo.dir
+/home/meiyuanyuan/cmake-demo/Demo3/buuld/CMakeFiles/edit_cache.dir
+/home/meiyuanyuan/cmake-demo/Demo3/buuld/math/CMakeFiles/rebuild_cache.dir
+/home/meiyuanyuan/cmake-demo/Demo3/buuld/math/CMakeFiles/MathFunctions.dir
+/home/meiyuanyuan/cmake-demo/Demo3/buuld/math/CMakeFiles/edit_cache.dir

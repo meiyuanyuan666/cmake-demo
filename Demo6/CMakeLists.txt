@@ -1,3 +1,5 @@
+# 添加环境检查
+
 # CMake 最低版本号要求
 cmake_minimum_required (VERSION 2.8)
 
@@ -6,6 +8,13 @@ project (Demo6)
 
 set (CMAKE_INCLUDE_CURRENT_DIR ON)
 
+# 是否使用自己的 MathFunctions 库
+option (HAVE_POW
+	   "Have provided math implementation" ON)
+
+# 添加环境检查
+# 有时候可能要对系统环境做点检查，例如要使用一个平台相关的特性的时候。
+# 在这个例子中，我们检查系统是否自带 pow 函数。如果带有 pow 函数，就使用它；否则使用我们定义的 power 函数。
 # 检查系统是否支持 pow 函数
 include (${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake)
 check_function_exists (pow HAVE_POW)

@@ -1,3 +1,6 @@
+# 生成安装包
+# 本节将学习如何配置生成各种平台上的安装包，包括二进制安装包和源码安装包。
+# 为了完成这个任务，我们需要用到 CPack ，它同样也是由 CMake 提供的一个工具，专门用于打包。
 cmake_minimum_required (VERSION 2.8)
 
 # 项目信息
@@ -61,9 +64,15 @@ do_test (10 5 "is 100000")
 do_test (2 10 "is 1024")
 
 # 构建一个 CPack 安装包
-include (InstallRequiredSystemLibraries)
+# 这个模块将包括当前平台项目所需要的任何运行时库
+include (InstallRequiredSystemLibraries) #导入 InstallRequiredSystemLibraries 模块，以便之后导入 CPack 模块；
+set(CPACK_GENERATOR"TGZ")
 set (CPACK_RESOURCE_FILE_LICENSE
-  "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+  "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")  #设置一些 CPack 相关变量，包括版权信息
 set (CPACK_PACKAGE_VERSION_MAJOR "${Demo_VERSION_MAJOR}")
-set (CPACK_PACKAGE_VERSION_MINOR "${Demo_VERSION_MINOR}")
-include (CPack)
+set (CPACK_PACKAGE_VERSION_MINOR "${Demo_VERSION_MINOR}") #设置一些 CPack 相关变量，包括版本信息，其中版本信息用了上一节定义的版本号；
+include (CPack) #导入 CPack 模块
+
+
+# 生成二进制安装包：cpack -C CPackConfig.cmake
+# 生成源码安装包：cpack -C CPackSourceConfig.cmake

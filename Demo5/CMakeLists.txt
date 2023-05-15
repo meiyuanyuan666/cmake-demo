@@ -1,3 +1,6 @@
+# 安装和测试
+# CMake 也可以指定安装规则，以及添加测试。这两个功能分别可以通过在产生 Makefile 后使用 make install 和 make test 来执行
+
 # CMake 最低版本号要求
 cmake_minimum_required (VERSION 2.8)
 
@@ -27,12 +30,20 @@ endif (USE_MYMATH)
 # 并将名称保存到 DIR_SRCS 变量
 aux_source_directory(. DIR_SRCS)
 
+# 支持 gdb
+# 让 CMake 支持 gdb 的设置也很容易，只需要指定 Debug 模式下开启 -g 选项：
+set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
 # 指定生成目标
 add_executable(Demo ${DIR_SRCS})
 target_link_libraries (Demo  ${EXTRA_LIBS})
 
 # 指定安装路径
+# 生成的 Demo 文件和 MathFunctions 函数库 libMathFunctions.o 文件将会被复制到 /usr/local/bin 中
 install (TARGETS Demo DESTINATION bin)
+# 而 MathFunctions.h 和生成的 config.h 文件则会被复制到 /usr/local/include 中
 install (FILES "${PROJECT_BINARY_DIR}/config.h"
          DESTINATION include)
 
